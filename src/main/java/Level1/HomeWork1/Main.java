@@ -2,6 +2,7 @@ package Level1.HomeWork1;
 
 //        1. Создать пустой проект в IntelliJ IDEA и прописать метод main().
 //        2. Создать переменные всех пройденных типов данных и инициализировать их значения.
+
 public class Main {
     public static void main(String[] args) {
         byte b; short s; int i; long l; float f; double d; boolean bool; char c;
