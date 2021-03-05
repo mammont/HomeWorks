@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+        gameInt();
         gameWords();
     }
 
@@ -14,7 +15,7 @@ public class Main {
 //       число, чем загаданное, или меньше. После победы или проигрыша выводится запрос – «Повторить игру еще раз?
 //       1 – да / 0 – нет»(1 – повторить, 0 – нет).
 
-    static void gameInt(){
+    private static void gameInt(){
         Random random = new Random();
         boolean winner = false;
         int a = random.nextInt(10), i, counter = 0, shot = 3;
@@ -33,6 +34,7 @@ public class Main {
         }
         System.out.print("Игра окончена.");
         if (!winner) System.out.print(" Было загадано число " + a);
+        System.out.println();
     }
 
 // 2. * Создать массив из слов
@@ -58,17 +60,34 @@ public class Main {
                 "kiwi", "mango", "mushroom", "nut", "olive",
                 "pea", "peanut", "pear", "pepper", "pineapple",
                 "pumpkin", "potato"};
+        Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         String question = words[random.nextInt(words.length - 1)];
-        System.out.println(question);
-        String str;
-        Scanner scanner = new Scanner(System.in);
+        StringBuilder hint;
+        int tries = 1;
+        int letter;
+        System.out.println("Отгадай слово!");
         while(true) {
-            str = scanner.next();
+            String str = scanner.next();
             if (Objects.equals(question, str)) {
-                System.out.println("совпало");
+                System.out.println("Верно! Загаданное слово - " + question + ". Ты угадал за " + tries + " попыток");
                 break;
             }
+            else {
+                hint = new StringBuilder();
+                letter = 0;
+                for (int i = 0; i < question.length() && i < str.length(); i++) {
+                    if (question.charAt(i) == str.charAt(i)) {
+                        hint.append(question.charAt(i));
+                        letter++;
+                    }
+                    else hint.append("#");
+                }
+                if (letter > 0) System.out.println("Ты угадал " + letter + " букв в слове: " + hint + "#############");
+                else System.out.println("Ты не угадал ни одной буквы, попробуй ещё раз.");
+            }
+            tries++;
         }
+        System.out.println();
     }
 }
