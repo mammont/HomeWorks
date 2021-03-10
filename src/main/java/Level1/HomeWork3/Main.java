@@ -18,23 +18,33 @@ public class Main {
     private static void gameInt(){
         Random random = new Random();
         boolean winner = false;
-        int a = random.nextInt(10), i, counter = 0, shot = 3;
+        int a = random.nextInt(10), i, t, counter = 0, shot = 3;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Загадано число от 0 до 10. Отгадай его!");
         while(counter < shot){
             i = scanner.nextInt();
-            if (i == a) {
+            if (i < a) System.out.println("Загаданное число больше! У тебя осталось " + (shot-counter-1) + " попыток");
+            else if (i > a) System.out.println("Загаданное число меньше! У тебя осталось " + (shot-counter-1) + " попыток");
+            else {
                 System.out.println("Верно! Это число " + a + "\nТы отгадал с " + (counter + 1) + " попытки");
                 winner = true;
                 break;
             }
-            if (i < a) System.out.println("Загаданное число больше! У тебя осталось " + (shot-counter-1) + " попыток");
-            if (i > a) System.out.println("Загаданное число меньше! У тебя осталось " + (shot-counter-1) + " попыток");
+
             counter++;
         }
         System.out.print("Игра окончена.");
-        if (!winner) System.out.print(" Было загадано число " + a);
-        System.out.println();
+        if (!winner) System.out.println(" Было загадано число " + a);
+        System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
+        while(true) {
+            t = scanner.nextInt();
+            if (t == 1) {
+                gameInt();
+                return;
+            }
+            else if (t == 0) return;
+            else System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
+        }
     }
 
 // 2. * Создать массив из слов
