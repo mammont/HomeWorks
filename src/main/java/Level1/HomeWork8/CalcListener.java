@@ -9,11 +9,16 @@ public class CalcListener implements ActionListener {
     public double result = 0;
     public double variable = 0;
     public String operator = "";
-    public boolean resetField = false;
+    public boolean resetField;
+
 
     public CalcListener(JTextField in) {
         this.in = in;
     }
+
+
+
+
 
     public Double calculate(double result, double variable, String operator) {
         switch (operator){
@@ -37,11 +42,19 @@ public class CalcListener implements ActionListener {
                 break;
             case "/":
                 if (variable != 0) result /= variable;
-                else result = 0;
+                else {
+                    result = 0;
+                }
                 break;
             case "/=":
                 if (variable != 0) result /= variable;
                 else result = 0;
+                break;
+            case "X^Y":
+                result = Math.pow(result, variable);
+                break;
+            case "X^Y=":
+                result = Math.pow(result, variable);
                 break;
         }
         return result;
@@ -51,17 +64,22 @@ public class CalcListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton btn = (JButton) e.getSource();
         System.out.println(btn.getText());
+
         switch (btn.getText()) {
             case "+":
                 operator = "+";
                 result = Double.parseDouble(in.getText());
                 System.out.println("Сложение");
                 in.setText("0");
+
                 break;
             case "-":
-                operator = "-";
-                result = Double.parseDouble(in.getText());
-                in.setText("0");
+                if (operator.equals("") && in.getText().equals("0")) in.setText("-");
+                else {
+                    operator = "-";
+                    result = Double.parseDouble(in.getText());
+                    in.setText("0");
+                }
                 System.out.println("Вычитание");
                 break;
             case "*":
@@ -76,6 +94,28 @@ public class CalcListener implements ActionListener {
                 in.setText("0");
                 System.out.println("Деление");
                 break;
+            case "X^2":
+                operator = "";
+                result = Double.parseDouble(in.getText()) * Double.parseDouble(in.getText());
+                in.setText(String.valueOf(result));
+                System.out.println("Во вторую степень");
+                break;
+            case "X^Y":
+                operator = "X^Y";
+                result = Double.parseDouble(in.getText());
+                in.setText("0");
+                System.out.println("X в степень Y");
+                break;
+            case "SQRT(x)":
+                operator = "";
+                result = Double.parseDouble(in.getText());
+                if (result < 0) in.setText("Отрицательное значение");
+                else {
+                    result = Math.sqrt(result);
+                    in.setText(String.valueOf(result));
+                    System.out.println("Извлечение квадратного корня");
+                }
+                break;
             case "=":
                 if (operator.contains("=")) {
                     result = calculate(result, variable, operator);
@@ -83,7 +123,6 @@ public class CalcListener implements ActionListener {
                 }
                 else {
                     variable = Double.parseDouble(in.getText());
-                    System.out.println("========");
                     result = calculate(result, variable, operator);
                     in.setText(String.valueOf(result));
                     operator = operator + "=";

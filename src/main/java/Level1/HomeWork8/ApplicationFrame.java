@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ApplicationFrame extends JFrame {
+
+
     public ApplicationFrame() {
         setTitle("Calculator v1.0");
         setBounds(50, 50, 400, 500);
@@ -24,7 +26,7 @@ public class ApplicationFrame extends JFrame {
         setVisible(true);
     }
 
-    private JPanel createBottom(JTextField in) {
+    public JPanel createBottom(JTextField in) {
         JPanel bottom = new JPanel();
 
         bottom.setLayout(new GridLayout(5, 4));

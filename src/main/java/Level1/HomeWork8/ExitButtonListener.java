@@ -11,5 +11,6 @@ public class ExitButtonListener implements ActionListener {
 //        System.out.println("Text: " + menuItem.getText());
 //        System.out.println("EXIT");
         System.exit(1);
+
     }
 }

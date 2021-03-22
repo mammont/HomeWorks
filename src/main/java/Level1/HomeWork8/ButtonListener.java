@@ -6,12 +6,11 @@ import java.awt.event.ActionListener;
 
 public class ButtonListener implements ActionListener {
     private final JTextField in;
-
+    public boolean isClear;
 
     public ButtonListener(JTextField in) {
         this.in = in;
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
