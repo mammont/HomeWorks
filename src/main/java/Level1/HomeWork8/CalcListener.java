@@ -17,36 +17,23 @@ public class CalcListener implements ActionListener {
     private Double calculate(double result, double variable, String operator) {
         switch (operator){
             case "+":
-                result += variable;
-                break;
             case "+=":
                 result += variable;
                 break;
             case "-":
-                result -= variable;
-                break;
             case "-=":
                 result -= variable;
                 break;
             case "*":
-                result *= variable;
-                break;
             case "*=":
                 result *= variable;
                 break;
             case "/":
-                if (variable != 0) result /= variable;
-                else {
-                    result = 0;
-                }
-                break;
             case "/=":
                 if (variable != 0) result /= variable;
                 else result = 0;
                 break;
             case "X^Y":
-                result = Math.pow(result, variable);
-                break;
             case "X^Y=":
                 result = Math.pow(result, variable);
                 break;
