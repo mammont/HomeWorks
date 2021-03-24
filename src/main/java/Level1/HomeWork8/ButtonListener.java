@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 public class ButtonListener implements ActionListener {
     private final JTextField in;
-    public boolean isClear;
 
     public ButtonListener(JTextField in) {
         this.in = in;
@@ -18,7 +17,6 @@ public class ButtonListener implements ActionListener {
 
         StringBuilder stringBuilder = new StringBuilder(in.getText());
         System.out.println(btn.getText());
-
 
         if (btn.getText().equals("0") && in.getText().equals("0")) {
             stringBuilder.deleteCharAt(0);
@@ -34,8 +32,5 @@ public class ButtonListener implements ActionListener {
             stringBuilder.append(btn.getText());
             in.setText(stringBuilder.toString());
         }
-
     }
-
-
 }

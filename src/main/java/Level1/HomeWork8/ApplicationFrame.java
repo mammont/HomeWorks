@@ -95,8 +95,6 @@ public class ApplicationFrame extends JFrame {
         clear.addActionListener(calcListener);
         bottom.add(clear);
 
-
-
         return bottom;
     }
 
@@ -108,9 +106,7 @@ public class ApplicationFrame extends JFrame {
         in.setFont(new Font("Dialog", Font.PLAIN, 24));
         in.setHorizontalAlignment(JTextField.RIGHT);
 
-
         in.setEditable(false);
-
 
         top.add(in, BorderLayout.NORTH);
         in.setText("0");

@@ -6,21 +6,15 @@ import java.awt.event.ActionListener;
 
 public class CalcListener implements ActionListener {
     private final JTextField in;
-    public double result = 0;
-    public double variable = 0;
-    public String operator = "";
-    public boolean resetField;
-
+    private double result = 0;
+    private double variable = 0;
+    private String operator = "";
 
     public CalcListener(JTextField in) {
         this.in = in;
     }
 
-
-
-
-
-    public Double calculate(double result, double variable, String operator) {
+    private Double calculate(double result, double variable, String operator) {
         switch (operator){
             case "+":
                 result += variable;
@@ -71,7 +65,6 @@ public class CalcListener implements ActionListener {
                 result = Double.parseDouble(in.getText());
                 System.out.println("Сложение");
                 in.setText("0");
-
                 break;
             case "-":
                 if (operator.equals("") && in.getText().equals("0")) in.setText("-");
@@ -109,7 +102,7 @@ public class CalcListener implements ActionListener {
             case "SQRT(x)":
                 operator = "";
                 result = Double.parseDouble(in.getText());
-                if (result < 0) in.setText("Отрицательное значение");
+                if (result < 0) in.setText("0");
                 else {
                     result = Math.sqrt(result);
                     in.setText(String.valueOf(result));
@@ -137,6 +130,5 @@ public class CalcListener implements ActionListener {
                 in.setText("0");
                 break;
         }
-
     }
 }
