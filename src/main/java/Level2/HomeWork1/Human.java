@@ -2,8 +2,8 @@ package Level2.HomeWork1;
 
 public class Human implements Action {
     private String name;
-    private int runLimit = 1000;
-    private int jumpLimit = 2;
+    private final int runLimit = 1000;
+    private final int jumpLimit = 2;
     private boolean onDistance = true;
 
     public Human(String name) {

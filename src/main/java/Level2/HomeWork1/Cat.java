@@ -2,8 +2,8 @@ package Level2.HomeWork1;
 
 public class Cat implements Action{
     private String name;
-    private int runLimit = 500;
-    private int jumpLimit = 5;
+    private final int runLimit = 500;
+    private final int jumpLimit = 5;
     private boolean onDistance = true;
 
     public Cat(String name) {

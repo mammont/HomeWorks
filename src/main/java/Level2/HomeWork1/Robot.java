@@ -2,8 +2,8 @@ package Level2.HomeWork1;
 
 public class Robot implements Action{
     private String name;
-    private int runLimit = 2500;
-    private int jumpLimit = 35;
+    private final int runLimit = 2500;
+    private final int jumpLimit = 35;
     private boolean onDistance = true;
 
     public Robot(String name) {
