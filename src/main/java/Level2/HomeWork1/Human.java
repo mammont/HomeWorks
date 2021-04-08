@@ -10,10 +10,6 @@ public class Human implements Action {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     @Override
     public void jump(int height) {
         if (onDistance) {
