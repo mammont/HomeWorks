@@ -10,7 +10,6 @@ package Level2.HomeWork2;
 //    MyArrayDataException и вывести результат расчета (сумму элементов, при условии что подали на вход
 //    корректный массив).
 
-
 public class Main {
     public static void main(String[] args) {
 
