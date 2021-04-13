@@ -69,8 +69,7 @@ public class CalcListener extends Clear implements ActionListener {
                 action(btn.getText());
                 break;
             case "-":
-                if (operator.equals("") & in.getText().equals("0") | operator.contains("*") | operator.contains("/") |
-                operator.contains("X^Y")) {
+                if (operator.equals("") & in.getText().equals("0") | operator.contains("X^Y")) {
                     in.setText("-");
                     Clear.clear = false;
                 }
