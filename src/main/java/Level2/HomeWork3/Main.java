@@ -43,13 +43,7 @@ public class Main {
         for (int i = 1; i <= 10; i++) integers.add(i);
         System.out.println(integers);
         Iterator<Integer> integerIterator = integers.iterator();
-        int nextInt;
-        while (integerIterator.hasNext()){
-            nextInt = integerIterator.next();
-            if (nextInt %2 == 0){
-                integerIterator.remove();
-            }
-        }
+        while (integerIterator.hasNext()) if (integerIterator.next() %2 == 0) integerIterator.remove();
         System.out.println(integers);
     }
 }
