@@ -49,6 +49,7 @@ public class Main {
                 integerIterator.remove();
             }
         }
+//      integers.removeIf(nextInt -> nextInt % 2 == 0); вместо цикла while предлагает IDEA
         System.out.println(integers);
     }
 }
