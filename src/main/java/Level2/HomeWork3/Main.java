@@ -40,7 +40,7 @@ public class Main {
 //------------------------------------------------------------------------------------------
 
         ArrayList<Integer> integers = new ArrayList<>();
-        for (int i = 1; i <= 6; i++) integers.add(i);
+        for (int i = 1; i <= 10; i++) integers.add(i);
         System.out.println(integers);
         Iterator<Integer> integerIterator = integers.iterator();
         while (integerIterator.hasNext()){
