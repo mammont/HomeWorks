@@ -43,13 +43,13 @@ public class Main {
         for (int i = 1; i <= 10; i++) integers.add(i);
         System.out.println(integers);
         Iterator<Integer> integerIterator = integers.iterator();
+        int nextInt;
         while (integerIterator.hasNext()){
-            int nextInt = integerIterator.next();
+            nextInt = integerIterator.next();
             if (nextInt %2 == 0){
                 integerIterator.remove();
             }
         }
-//      integers.removeIf(nextInt -> nextInt % 2 == 0); вместо цикла while предлагает IDEA
         System.out.println(integers);
     }
 }
