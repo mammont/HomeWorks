@@ -36,21 +36,21 @@ public class Main {
         };
 
         try {
-            System.out.println(CheckArrayInt4x4.method(arr1));
+            System.out.println(ArrayInt4x4SumElements.method(arr1));
         }
         catch (MyException e) {
             e.printStackTrace();
         }
 
         try {
-            System.out.println(CheckArrayInt4x4.method(arr2));
+            System.out.println(ArrayInt4x4SumElements.method(arr2));
         }
         catch (MyException e) {
             e.printStackTrace();
         }
 
         try {
-            System.out.println(CheckArrayInt4x4.method(arr3));
+            System.out.println(ArrayInt4x4SumElements.method(arr3));
         }
         catch (MyException e) {
             e.printStackTrace();
