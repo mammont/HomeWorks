@@ -1,7 +1,7 @@
 package Level2.HomeWork2;
 
 public class ArrayInt4x4SumElements {
-    public static int method(String[][] arr) throws MyArraySizeException, MyArrayDataException {
+    public static int sumElements(String[][] arr) throws MyArraySizeException, MyArrayDataException {
         int sum = 0;
         if (arr.length != MyArraySizeException.dimension) {
             throw new MyArraySizeException();
