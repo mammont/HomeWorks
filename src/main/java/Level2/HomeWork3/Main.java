@@ -6,6 +6,7 @@ package Level2.HomeWork3;
 //    В этот телефонный справочник с помощью метода add() можно добавлять записи. С помощью метода get() искать
 //    номер телефона по фамилии. Следует учесть, что под одной фамилией может быть несколько телефонов (в случае
 //    однофамильцев), тогда при запросе такой фамилии должны выводиться все телефоны.
+// 3. * Пройтись по списку ArrayList, например {1, 2, 3, 4, 5, 6} и удалить все четные элементы во время прохождения
 
 import java.util.*;
 
@@ -35,5 +36,14 @@ public class Main {
 
         System.out.println(phoneBook.get("Иванов"));
         System.out.println(phoneBook.get("Петров"));
+
+//------------------------------------------------------------------------------------------
+
+        ArrayList<Integer> integers = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) integers.add(i);
+        System.out.println(integers);
+        Iterator<Integer> integerIterator = integers.iterator();
+        while (integerIterator.hasNext()) if (integerIterator.next() %2 == 0) integerIterator.remove();
+        System.out.println(integers);
     }
 }
