@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CalcListener implements ActionListener {
+public class CalcListener extends Clear implements ActionListener {
     private final JTextField in;
     private double result = 0;
     private double variable = 0;
@@ -41,6 +41,22 @@ public class CalcListener implements ActionListener {
         return result;
     }
 
+    private void action(String btn){
+        if (in.getText().equals("-")){
+            in.setText("0");
+        }
+        if (!operator.equals("")) {
+            variable = Double.parseDouble(in.getText());
+            result = calculate(result, variable, operator);
+            in.setText(String.valueOf(result));
+        }
+        else {
+            result = Double.parseDouble(in.getText());
+        }
+        Clear.clear = true;
+        operator = btn;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton btn = (JButton) e.getSource();
@@ -48,42 +64,30 @@ public class CalcListener implements ActionListener {
 
         switch (btn.getText()) {
             case "+":
-                operator = "+";
-                result = Double.parseDouble(in.getText());
-                System.out.println("Сложение");
-                in.setText("0");
+            case "*":
+            case "/":
+                action(btn.getText());
                 break;
             case "-":
-                if (operator.equals("") && in.getText().equals("0")) in.setText("-");
-                else {
-                    operator = "-";
-                    result = Double.parseDouble(in.getText());
-                    in.setText("0");
+                if (operator.equals("") & in.getText().equals("0") | operator.contains("X^Y")) {
+                    in.setText("-");
+                    Clear.clear = false;
                 }
-                System.out.println("Вычитание");
-                break;
-            case "*":
-                operator = "*";
-                result = Double.parseDouble(in.getText());
-                in.setText("0");
-                System.out.println("Умножение");
-                break;
-            case "/":
-                operator = "/";
-                result = Double.parseDouble(in.getText());
-                in.setText("0");
-                System.out.println("Деление");
+                else {
+                    action(btn.getText());
+                    break;
+                }
                 break;
             case "X^2":
                 operator = "";
-                result = Double.parseDouble(in.getText()) * Double.parseDouble(in.getText());
+                result = Math.pow(Double.parseDouble(in.getText()), 2);
                 in.setText(String.valueOf(result));
                 System.out.println("Во вторую степень");
                 break;
             case "X^Y":
                 operator = "X^Y";
                 result = Double.parseDouble(in.getText());
-                in.setText("0");
+                Clear.clear = true;
                 System.out.println("X в степень Y");
                 break;
             case "SQRT(x)":

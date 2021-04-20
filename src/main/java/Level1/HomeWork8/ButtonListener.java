@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonListener implements ActionListener {
+public class ButtonListener extends Clear implements ActionListener {
     private final JTextField in;
 
     public ButtonListener(JTextField in) {
@@ -17,6 +17,12 @@ public class ButtonListener implements ActionListener {
 
         StringBuilder stringBuilder = new StringBuilder(in.getText());
         System.out.println(btn.getText());
+
+        if (Clear.clear) {
+            stringBuilder.setLength(0);
+            in.setText(stringBuilder.toString());
+            Clear.clear = false;
+        }
 
         if (btn.getText().equals("0") && in.getText().equals("0")) {
             stringBuilder.deleteCharAt(0);
