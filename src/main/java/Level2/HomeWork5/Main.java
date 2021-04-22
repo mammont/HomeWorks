@@ -1,5 +1,7 @@
 package Level2.HomeWork5;
 
+import java.util.Arrays;
+
 /**
  * 1. Необходимо написать два метода, которые делают следующее:
  * 1) Создают одномерный длинный массив, например:
@@ -47,30 +49,25 @@ public class Main {
     private static final int SIZE = 10000000;
     private static final int HALF_SIZE = SIZE / 2;
 
-    private float[] calculate(float[] arr) {
+    private void calculate(float[] arr) {
         for (int i = 0; i < arr.length; i++)
             arr[i] = (float)(arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-        return arr;
     }
 
-    private void runOneThread() {
+    private void OneThread() {
         float[] arr = new float[SIZE];
-        for (int i = 0; i < arr.length; i++){
-            arr[i] = 1.0f;
-        }
+        Arrays.fill(arr, 1.0f);
         long time = System.currentTimeMillis();
         calculate(arr);
-        System.out.printf("One thread method ends with: %s ms \n", System.currentTimeMillis() - time);
+        System.out.printf("Рассчёт в один поток занял: %s мс \n", System.currentTimeMillis() - time);
     }
 
-    private void runTwoThreads() {
+    private void TwoThreads() {
 
         float[] arr = new float[SIZE];
         float[] arr1 = new float[HALF_SIZE];
         float[] arr2 = new float[HALF_SIZE];
-        for (int i = 0; i < arr.length; i++){
-            arr[i] = 1.0f;
-        }
+        Arrays.fill(arr, 1.0f);
         long time = System.currentTimeMillis();
         System.arraycopy(arr, 0, arr1, 0, HALF_SIZE);
         System.arraycopy(arr, HALF_SIZE, arr2, 0, HALF_SIZE);
@@ -90,12 +87,12 @@ public class Main {
 
         System.arraycopy(arr1, 0, arr, 0, HALF_SIZE);
         System.arraycopy(arr2, 0, arr, HALF_SIZE, HALF_SIZE);
-        System.out.printf("Two threads method ends with: %s ms \n", System.currentTimeMillis() - time);
+        System.out.printf("Рассчёт в два потока занял: %s мс \n", System.currentTimeMillis() - time);
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.runOneThread();
-        main.runTwoThreads();
+        main.OneThread();
+        main.TwoThreads();
     }
 }
