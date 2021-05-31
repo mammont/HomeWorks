@@ -16,6 +16,7 @@ public class Car implements Runnable {
     private String name;
 
     private static boolean winner = false;
+    public static String winnersName;
 
     public String getName() {
         return name;
@@ -54,7 +55,8 @@ public class Car implements Runnable {
 
     private static synchronized void checkWinner(Car car) {
         if (!winner) {
-            System.out.println(car.name + " - WIN");
+            winnersName = car.name;
+            System.out.println(winnersName + " - WIN");
             winner = true;
         }
     }

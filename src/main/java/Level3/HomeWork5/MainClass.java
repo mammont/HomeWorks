@@ -11,6 +11,8 @@ package Level3.HomeWork5;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 
+import static Level3.HomeWork5.Car.winnersName;
+
 public class MainClass {
     public static final int CARS_COUNT = 4;
     public static void main(String[] args) throws InterruptedException {
@@ -34,6 +36,6 @@ public class MainClass {
         countDownLatchReady.await();
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
         countDownLatchFinish.await();
-        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
+        System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!! Победил " + winnersName);
     }
 }
